@@ -36,13 +36,31 @@ app.post('/register', (req, res)=>{
     badInputs: dataVerification['validFields'].map(val => !val)};
     
     if(dataVerification['error']){
-        res.redirect('/register', {fields: register.getAllFields(), fieldContents: [], badInputs: []})
+        res.redirect('/register', {fields: register.getAllFields(), fieldContents: {}, badInputs: []})
         //maybe improve error handling later
     }else if(dataVerification['validFields'].includes(false)){
         res.render('register', render_dict);
     }else{
-        //store in database
-        //redirect somewhere
+        var con = require('./config/connection.js').createCon();
+        //remove unused data (while there isnt validation)
+        delete dataVerification['cleanValues'].uname;
+        delete dataVerification['cleanValues'].pwd;
+        delete dataVerification['cleanValues'].agrees;
+        delete dataVerification['cleanValues'].promo;
+        function questionmarks(length){
+            var str = '?';
+            for(var i=0; i<length-1; i++){
+                str = str.concat(', ?');
+            }; return str}
+        var sql = ('insert into customers ('+
+        Object.keys(dataVerification['cleanValues']).join(', ') +', AgentId) values ('+
+        questionmarks(Object.values(dataVerification['cleanValues']).length) +', NULL)')
+        con.query(sql, Object.values(dataVerification['cleanValues']), (err, result)=>{
+            if(err) throw err;
+            con.end();
+        });
+        //redirect somewhere else
+        res.redirect('/contact');
     }
 });
 

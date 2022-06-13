@@ -49,9 +49,9 @@
                             <input 
                                 type='<%= fields[i].field_type %>' 
                                 id='<%= fields[i].id %>' 
-                                name='<%= fields[i].id %>' <% if(fieldContents[i] != undefined && fieldContents[i] != ''){ %> 
+                                name='<%= fields[i].id %>' <% if(fieldContents[fields[i].id] != undefined && fieldContents[fields[i].id] != ''){ %> 
                                 <% if(fields[i].field_type == 'checkbox'){ %> checked <% }else{ %> 
-                                value='<%= fieldContents[i] %>'<% }} %> 
+                                value='<%= fieldContents[fields[i].id] %>'<% }} %> 
                                 <%= ((fields[i].required) ? 'required' : '') %> 
                                 maxlength='<%= fields[i].max_length %>' 
                                 onfocus='this.parentElement.style.backgroundColor = "rgba(0,0,0,0)"'; 

@@ -92,8 +92,8 @@ const REGISTRATION_FIELDS = [
     new FormField('Province Code', 'CustProv', 'text', true, /[a-z]{2}/i, 2),
     new ConcatField('Postal Code', 'CustPostal', 'text', true, /^[a-z]\d[a-z][ -]?\d[a-z]\d$/i),
     new FormField('Country', 'CustCountry'),
-    new ConcatField('Home Phone', 'CustHomePhone', 'phone', true, /[( ]{0,}\d{3}[)]?\d{3}[ -]{0,}\d{4}$/),
-    new ConcatField('Business Phone', 'CustBusPhone', 'phone', false, /[( ]{0,}\d{3}[)]?\d{3}[ -]{0,}\d{4}$/),
+    new ConcatField('Home Phone', 'CustHomePhone', 'phone', false, /[( ]{0,}\d{3}[)]?\d{3}[ -]{0,}\d{4}$/),
+    new ConcatField('Business Phone', 'CustBusPhone', 'phone', true, /[( ]{0,}\d{3}[)]?\d{3}[ -]{0,}\d{4}$/),
     new NoCleanupField('Email', 'CustEmail', 'email'), //already cleaned-up by the email field type
     new NoCleanupField('Username', 'uname'), //keep all the data the user typed
     new NoCleanupField('Password', 'pwd', 'password'), //keep all the data the user typed
@@ -102,7 +102,7 @@ const REGISTRATION_FIELDS = [
 ]
 
 function verifyFormFields(values){
-    var cleanValues = [];
+    var cleanValues = {};
     var validFields = [];
     var error = false;
 
@@ -110,11 +110,11 @@ function verifyFormFields(values){
         try{
         //res = {cleanValue: ..., valid: true/false}
         let res = field.validate(values[field.id]);
-        cleanValues.push(res['cleanValue']);
+        cleanValues[field.id] = res['cleanValue'];
         validFields.push(res['valid']);
         }catch (err) {error = true;}
     }
-    if(cleanValues.length != REGISTRATION_FIELDS.length)
+    if(Object.values(cleanValues).length != REGISTRATION_FIELDS.length)
         error = true;
 
     return {error: error, cleanValues: cleanValues, validFields: validFields}
