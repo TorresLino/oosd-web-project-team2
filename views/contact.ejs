@@ -14,27 +14,26 @@
 
     <link rel="stylesheet" href="general-arthur.css">
     <script src="../scripts/contact.js"></script>
+    <style>
+        .page-title{
+            position: absolute;
+            top: 300px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            text-shadow: 5px 5px 5px rgba(0, 0, 0, 25);
+        }
+    </style>
 </head>
 <body>
     <%- include('../components/header.ejs') %> 
 
     <img src="/media/neuschwanstein.jpg" alt="Castle background" class="background">
+    <div class="page-title">
+        <h1>Contact</h1>
+    </div>
 
     <div class="content">
-        <div class="frame-body" style="width: 50%;">
-            <div class="frame-top"></div>
-            <div class="frame-content">
-                <h3>How to reach us!</h3>
-                <ul style="padding: 30px;">
-                    <li>
-                        Call us at: (825) 555-1234
-                    </li>
-                    <li>
-                        Email: contact@travelexperts.com
-                    </li>
-                </ul>
-            </div>
-        </div>
 
         <div class="frame-body" style="width: 30%;">
             <div class="frame-top"></div>
@@ -45,11 +44,40 @@
                 <div id="map"></div>
             </div>
         </div>
+
+        <div class="frame-body" style="width: 50%;">
+            <div class="frame-top"></div>
+            <div class="frame-content">
+                <h3>How to reach us!</h3>
+                <div style="padding: 30px;">
+                    <% for(let i=0; i<agencies.length; i++){ %> 
+                        <% var agency=agencies[i]; %> 
+                        <h4><%= agency.AgncyCity %>, <%= agency.AgncyProv %> </h4>
+                        <p>Address: <%= agency.AgncyAddress %>, <%= agency.AgncyPostal %> </p>
+                        <p>Phone: <%= agency.AgncyPhone %> </p>
+                        <h5>Agents: </h5>
+                        <ul style="margin-left: 2%;">
+                            <% for(let i=0; i<agents[agency.AgencyId].length; i++){ %> 
+                                <% var agent = agents[agency.AgencyId][i] %> 
+                                <li>
+                                    <h6><%= agent.AgtFirstName %> <%= agent.AgtLastName %></h6>
+                                    <ul style="margin-left: 2%;">
+                                        <li>Phone: <%= agent.AgtBusPhone %></li>
+                                        <li>Email: <%= agent.AgtEmail %></li>
+                                    </ul>
+                                </li>                                
+                            <% } %>
+                        </ul>
+                    <% } %> 
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
-
-
     <%- include('../components/footer.ejs') %> 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk3oTfiOkeXiWZOTCSGED2k4Or79vJr00&callback=initMap&v=weekly" defer></script>
+    <!-- API key is incorrect (aaa)-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=aaa&callback=initMap&v=weekly" defer></script>
 </body>
 </html>
