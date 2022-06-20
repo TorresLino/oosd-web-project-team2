@@ -1,0 +1,427 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap'); /* roboto font */
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #fbf9f0;
+  color: #4c4a42;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+h4 {
+	padding: 20px;
+}
+.center {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+	margin: 20px;
+}
+.background{
+  width: 100%;
+  object-fit: cover;
+  
+}
+.header {
+  padding: 30px;
+  background-color: #d9ed92;
+  position: sticky; top: 0;
+  /*background-image: linear-gradient(to right, rgb(240, 245, 223), rgb(189, 221, 128));*/
+}
+div.gallery {
+  border: 2px solid rgb(12, 12, 12);
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.carousel-image {
+	max-height: 500px;
+	width: auto;
+	object-fit: cover;
+	opacity: 0.7;
+	margin-bottom: 30px;
+}
+
+.carousel-heading {
+	font-size: 2em;
+	color: white;
+	text-shadow: 2px 2px 10px #004e64;
+  top:200px;
+}
+
+.carousel-text {
+	font-size: 1.5em;
+	color: #004e64;
+	text-shadow: 2px 2px 5px white;
+	font-weight: bold;
+}
+
+#searchForm {
+	max-width: 90%;
+	margin: 20px auto;
+	padding: 10px;
+	border: none;
+}
+
+#searchForm input, #searchForm select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#searchForm input[type=submit] {
+  width: 100%;
+  background-color: #00a5cf;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#searchForm input[type=submit]:hover {
+  background-color: #004e64;
+}
+
+#registerForm {
+	margin: 30px auto;
+	padding: 20px;
+	max-width: 800px;
+	border-radius: 5px;
+	background-color: rgba(0, 165, 207, 0.3);
+}
+
+#registerForm input, #registerForm select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#registerForm input[type=submit] {
+  width: 100%;
+  background-color: #86b827;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#registerForm input[type=submit]:hover {
+  background-color: #76a222;
+}
+
+footer {
+  background-color: #004e64;
+  padding: 20px;
+  color: white;
+  width: 100%;
+  flex: 0 0 50px;
+  margin-top: auto;
+}
+
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 2000px;
+    width: 100%;
+    font-family: "Roboto";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    }
+/* The dots/bullets/indicators */
+.dot {
+    height: 15px;
+  	width: 15px;
+    margin: 0 2px;
+    background-color:#86b827;/*Apple Green*/	
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.10s ease; 
+    font-family: "Roboto" ;}
+.active {  background-color: #d9ed92; /*Yellow Green Crayola*/}
+/* Fading animation */ 
+.fade {animation-name: fade;animation-duration: 10s;} @keyframes fade {from {opacity: .6} to {opacity: 1}}
+/* On smaller screens, decrease text size */ 
+@media only screen and (max-width: 300px) {.text {font-size: 11px}}d
+vvvvvvv
+/* fonts  */ 
+p.a{color: #d9ed92 ; /*Midnight Green Eagle Green blue*/ 	text-shadow: 2px 2px 5px #86b827 /*Apple Green*/ 	;   font-family: "Roboto" ;  font-size: 4em;}
+p.b{color: #d9ed92 ; /*Midnight Green Eagle Green blue*/	text-shadow: 2px 2px 5px #86b827 /*Apple Green*/	;	font-family: "Roboto" ;   font-size: 2em;} 
+p.c{color: #004e64   ; /*Midnight Green Eagle Green blue*/	text-shadow: 2px 2px 5px #86b827 /*Apple Green*/	;	font-family: "Roboto" ;   font-size: 2em;} 
+p.d{color: #022731   ; /*Midnight Green Eagle Green blue*/	text-shadow: 2px 2px 5px #86b827 /*Apple Green*/	;	font-family: "Roboto" ;   font-size: 2em;} 	
+p.e{font-family: "Roboto" ;} 
+p.f{color: #fbf9f0   ; /* Floral White*/	text-shadow: 2px 2px 5px #86b827 /*Apple Green*/	;	font-family: "Roboto" ;   font-size: 2em;} 	
+p.g{color: #004e64   ; /*Midnight Green Eagle Green blue*/	text-shadow: 2px 2px 5px #86b827 /*Apple Green*/	;	font-family: "Roboto" ;   font-size: 1em;}
+p.h{color: #004e64   ; /*Midnight Green Eagle Green blue*/		font-family: "Roboto" ;   font-size: 2em;} 
+p.i{color: #004e64   ;	font-family: "Roboto" ;   font-size: 1em;}
+p.j{color: #004e64   ;	font-family: "Roboto" ; font-size: 1em;  text-align: center;}
+
+.centered {
+	display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  color: black;
+	margin: 20px;
+}
+.centered3 {
+  color: rgb(102, 100, 100);
+	margin: 20px;
+  border: 1px solid black;
+  text-align: center;
+  font-family: "Roboto" ;
+}
+.centered2 {
+  float: right;
+  color: black;
+	margin: 20px;
+  border: 2px solid black;
+}
+.centered4{
+  width:100%;
+  margin-bottom:50px;
+  align-items: center;
+}
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  color: black;
+  left: 50%;
+  font-size: 2.5em;
+  transform: translate(-50%, -50%);
+}
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  /*background-color: #3f8ea1 /*Cerulean Crayola blue*/ ;
+  background-image: linear-gradient(to right, rgb(204, 233, 240), rgba(0, 78, 100, 1));
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-top: 2px solid black;
+  font-size:20px;
+}
+
+/* Style the buttonsto open the tab content */
+.tab button {
+    background-color: inherit;	
+    font-size: 20px;
+    outline: none;	
+    cursor: pointer;	
+    padding: 5px 6px;	
+    margin: 0px -6px 0 10px;
+    transition: 0.3s;	
+    z-index: 5;
+    border-radius: 8px 0 0 0;
+    -webkit-transform: skewX(-20deg);
+       -moz-transform: skewX(-20deg);
+         -o-transform: skewX(-20deg);
+            transform: skewX(-20deg);
+    background-color: #86b827 /*Apple Green*/;  
+    margin-left: 4px;} 
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    /*background-color: #004e64; */
+    background-image: linear-gradient(to right, rgb(219, 233, 92), rgba(204, 233, 240));
+    color: #00a5cf; /*Cerulean Crayola blue*/ 
+    color: rgb(83, 17, 17);}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #d9ed92 ;/*Cerulean Crayola blue*/ 
+    color: 004e64; 
+    border-top: 2px solid #00a5cf;
+    border-left: 2px solid #00a5cf;
+    border-right: 2px solid #00a5cf;
+    border-top: 2px solid #00a5cf;
+    font-size: 25px;
+    padding: 14px 24px 10px;
+    font-family: roboto;}
+
+/* Style the tab content */
+.tabcontent {
+    /*display: none;*/
+    font: 25px;
+    padding: 6px 12px;
+    border: 5px solid #00a5cf;
+    border-top: none;
+    background-image: linear-gradient(rgb(255, 255, 255), #f2f8e8);
+    width: 100%;
+    height: 600px; 
+    transition: opacity .55s ease-in-out;
+    -moz-transition: opacity .55s ease-in-out;
+    -webkit-transition: opacity .55s ease-in-out;
+    }
+.tablinks {
+    font-size: 1.2em;
+    padding: 2px 2px;
+    font-family: "roboto";
+    }
+.button4 {
+  background-color: #35b8e0;
+  border: none;
+  color: rgb(243, 243, 243);
+  padding: .8em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.1em;
+  margin: 4px 2px;
+  cursor: pointer;
+  border: 1px solid rgb(5, 5, 5);
+  font: "roboto";
+}
+.button4:hover {background-color: #3e8e41}
+
+.button4:active {
+  background-color: #666;
+  box-shadow: 0 5px rgb(255, 255, 255);
+  transform: translateY(4px);
+}
+.btnwidth{width: 250px; float: center;}
+
+.button1 {border-radius: 2px;}
+.button2 {border-radius: 4px;}
+.button3 {border-radius: 8px;}
+.button4 {border-radius: 12px;}
+.button5 {border-radius: 50%;}
+
+.col{
+  background-color: #666;
+  box-shadow: 0 5px #04AA6D;
+  margin: 4px 2px;
+  font-size: 20px;
+  font-family: "roboto";
+}
+
+td.a{
+  background-color: #bee1e4;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  margin: 4px 2px;
+  padding: 8px;
+  font-size: 15px;
+  font-family: "roboto";
+}
+.buffering{
+  padding: 20px;
+  font-family: "roboto";
+}
+
+#main {
+  transition: margin-right .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.borders{
+  border: 5px solid rgb(0, 0, 0);
+}
+.entertowin{  
+  padding: .1em;
+}
+#daySelection{
+  padding: 10px;
+  border-radius: 5px 5px 5px 5px;
+}
+#carselection{
+  padding: 10px;
+  border-radius: 5px 5px 5px 5px;
+}
+#carresults{
+  padding: .1em;
+  font-family: "roboto";
+  font-size: 15px;
+  border-radius: 5px 5px 5px 5px;
+}
+.gallery{
+  padding: 2px;
+  margin: 8px;
+}

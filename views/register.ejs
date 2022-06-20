@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="general-arthur.css">
 
     <style>
@@ -30,7 +28,7 @@
 <body>
     <%- include('../components/header.ejs') %> 
 
-    <img src="/media/neuschwanstein.jpg" alt="Castle background" class="background">
+    <img src="/neuschwanstein.jpg" alt="Castle background" class="background" style="z-index: -2;">
 
     <div class="content">
         <div class="frame-body" style="width: 80%; max-width: 920px;">
@@ -43,7 +41,7 @@
                             <p>
                                 <%= fields[i].label %>: 
                                 <span style='color:red;'>
-                                    <%= ((fields[i].required) ? '(Required)': '') %>  
+                                    <%= ((fields[i].required) ? '*': '') %>  
                                 </span>
                             </p>
                             <input 
