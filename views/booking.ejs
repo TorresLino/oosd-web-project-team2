@@ -1,0 +1,194 @@
+<!--This page is coded by Angel-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Travel Experts</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<%- include('../components/header.ejs') %> 
+
+<div class="container-fluid">
+  <h3 class="center">Booking Form</h1>
+  <p class="center">Already have an account?&nbsp;<a href="signin">Sign in</a>&nbsp;to book.</p>
+</div>
+
+<div class="container-fluid">
+  <form method="post" id= "bookingForm" action="/post-booking">
+    <% result.forEach((package)=>{ %>
+	<input type="hidden" id="packageId" name="packageId" value="<%= package.PackageId %>" readonly>
+	
+	<label for="packageName" class="col-4">Package Name: </label>
+    <input type="text" id="packageName" name="packageName" value="<%= package.PkgName %>" class="col-8" readonly><br>
+	
+	<label for="startDate" class="col-4">Start Date: </label>
+    <input type="date" id="startDate" name="startDate" value="<%= package.PkgStartDate.toLocaleDateString() %>" class="col-8" readonly><br>
+	
+	<label for="endDate" class="col-4">End Date: </label>
+    <input type="date" id="endDate" name="endDate" value="<%= package.PkgEndDate.toLocaleDateString() %>" class="col-8" readonly><br>
+	
+	<label for="unitPrice" class="col-4">Price per traveler (CAD$): </label>
+    <input type="text" id="unitPrice" name="unitPrice" value="<%= package.PkgBasePrice %>" class="col-8" readonly><br>
+	<% }); %> 
+	
+	<label for="totalPrice" class="col-4">Total Price (CAD$): </label>
+	<input type="number" id="totalPrice" name="totalPrice" class="col-8" readonly><br>
+	
+	<label for="travelerNo">No. of Traveler(s)</label>
+	<select name="travelerNo" id="travelerNo" onchange="calculateTotal()">
+	  <option value="">Select number of traveler(s)</option></option>
+	  <option value="1">1</option>
+	  <option value="2">2</option>
+	  <option value="3">3</option>
+	  <option value="4">4</option>
+	  <option value="5">5</option>
+	  <option value="6">6</option>
+	</select>
+		
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="fname">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lname">
+
+	<label for="address">Address</label>
+    <input type="text" id="address" name="address">
+	
+	<label for="city">City</label>
+    <input type="text" id="city" name="city">
+	
+	<label for="province">Province</label>
+    <input type="text" id="province" name="province">
+	
+	<label for="postalCode">Postal Code</label>
+    <input type="text" id="postalCode" name="postalCode">
+	
+	<label for="country">Country</label>
+	<input type="text" id="country" name="country">
+		
+	<label for="homePhone">Home Phone Number</label>
+	<input type="tel" id="homePhone" name="homePhone"></input>
+  
+	<label for="busPhone">Business Phone Number</label>
+	<input type="tel" id="busPhone" name="busPhone"></input>
+  
+	<label for="email">Email Address</label>
+	<input type="email" id="email" name="email"></input>
+	<div class="center">
+      <button type="submit" onclick="return validate(this.form);">Submit</button>
+	  <button type="reset" onclick="return confirm('Confirm resetting?');">Reset</button>
+	</div>
+  </form>
+</div>
+ 
+<footer>
+	<p>&copy;Travel Experts</p>
+</footer>
+
+<script>
+// to calculate total price
+function calculateTotal() {
+  var unitPrice = document.getElementById("unitPrice").value;
+  var travelerNo = document.getElementById("travelerNo").value;
+  var totalPrice = unitPrice * travelerNo;
+  document.getElementById("totalPrice").value = totalPrice;
+}
+
+// to validate on input before submitting
+function validate(myform) {
+  var travelerNo = document.getElementById("travelerNo");
+  if (travelerNo.value == "") {
+	alert("Please select number of travelers.");
+	travelerNo.focus();
+	return false;
+  }
+  
+  var fname = document.getElementById("fname");
+  if (fname.value == "") {
+	alert("Please enter first name.");
+	fname.focus();
+	return false;
+  }
+  
+  var lname = document.getElementById("lname");
+  if (lname.value == "") {
+	alert("Please enter last name.");
+	lname.focus();
+	return false;
+  }
+  
+  var address = document.getElementById("address");
+  if (address.value == "") {
+	alert("Please enter address.");
+	address.focus();
+	return false;
+  }
+  
+  var city = document.getElementById("city");
+  if (city.value == "") {
+	alert("Please enter city.");
+	city.focus();
+	return false;
+  }
+  
+  var province = document.getElementById("province");
+  if (province.value == "") {
+	alert("Please enter province.");
+	province.focus();
+	return false;
+  }
+  
+  var postalCode = document.getElementById("postalCode");
+  var regex = /^[A-Z][0-9][A-Z] ?[0-9][A-Z][0-9]$/i;
+  if (postalCode.value == "") {
+	alert("Please enter postal code.");
+	postalCode.focus();
+	return false;
+  } else if (!regex.test(postalCode.value)) {
+	alert("Not a valid postal code.");
+	postalCode.focus();
+	return false;
+  }
+  
+  var country = document.getElementById("country");
+  if (country.value == "") {
+	alert("Please enter country.");
+	country.focus();
+	return false;
+  }
+  
+  var homePhone = document.getElementById("homePhone");
+  if (homePhone.value == "") {
+	alert("Please enter home phone number.");
+	homePhone.focus();
+	return false;
+  }
+  
+  var busPhone = document.getElementById("busPhone");
+  if (busPhone.value == "") {
+	alert("Please enter business phone number.");
+	busPhone.focus();
+	return false;
+  } 
+  
+  var email = document.getElementById("email");
+  if (email.value == "") {
+	alert("Please enter email address.");
+	email.focus();
+	return false;
+  } else {
+   return confirm("Continue submitting?");
+  }
+}
+
+</script>
+
+</body>
+</html>

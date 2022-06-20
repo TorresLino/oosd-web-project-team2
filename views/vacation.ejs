@@ -1,0 +1,121 @@
+<!--This page is coded by Angel-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Travel Experts</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<%- include('../components/header.ejs') %> 
+
+<div class="container-fluid">
+  <h3 class="center">Vacation Packages</h3>
+  <p class="center">No idea where to go? See our huge selection of packages below:</p>
+</div>
+
+<!-- filter buttons -->
+<div id="btnContainer" class="container-fluid">
+  <button class="btn btn-filter active" onclick="filter('all')">Show all</button>
+  <button class="btn btn-filter" onclick="filter('america')">America</button>
+  <button class="btn btn-filter" onclick="filter('europe')">Europe</button>
+  <button class="btn btn-filter" onclick="filter('asia')">Asia</button>
+  <button class="btn btn-filter" onclick="filter('africa')">Africa</button>
+  <button class="btn btn-filter" onclick="filter('oceania')">Oceania</button>
+  <button class="btn btn-filter" onclick="filter('antartica')">Antartica</button>
+</div>
+
+<div class="container-fluid">
+  <% result.forEach((package)=>{ %>
+  <div class="package <%= package.PkgContinent %>">
+    <div class="gallery" data-bs-toggle="modal" data-bs-target="#bookModal">
+      <img src="<%= package.PkgImage %>" alt="<%= package.PkgName %>">
+      <div class="desc"><%= package.PkgName %></div>
+	  <!--details only appear in modal-->
+	  <div class="details">
+		<input type="hidden" id="packageId" name="packageId" value="<%= package.PackageId %>">
+	    <p><%= package.PkgDesc %></p>
+		<p>From <%= package.PkgStartDate.toDateString() %> to <%= package.PkgEndDate.toDateString() %></p>
+	    <p>From $<%= package.PkgBasePrice %>+</p>
+	  </div>
+    </div>
+  </div>
+  <% }); %> 
+</div>
+
+ <!-- modal to display details -->
+ <div class="modal container-fluid" id="bookModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+     
+      <div class="modal-header">
+        <h5 class="modal-title">Vacation Packages</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+	
+      <div class="modal-body"></div>
+
+      <div class="modal-footer">
+	    <button id="book" type="button" class="btn btn-primary" data-bs-dismiss="modal">Book Now</button>
+		
+		<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+	
+    </div>
+  </div>
+</div>
+ 
+<%- include('../components/footer.ejs') %> 
+
+<script>
+
+// filter accounding to selection
+function filter(c) {
+  var x, i;
+  x = document.querySelectorAll(".package");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    if (x[i].className.indexOf(c) > -1) {
+	  x[i].style.display = "block";
+	} else {
+	  x[i].style.display = "none";
+	}
+  }
+}
+
+// show the button of current selection as active
+var btns = document.querySelectorAll(".btn-filter");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.querySelector("#btnContainer .active");
+    current.className = current.className.replace(" active", "");
+    this.className += " active";
+  });
+}
+
+
+//open booking page upon clicking "Book Now" button
+var book = document.querySelector("#book");
+book.addEventListener("click", function(){
+  window.location = "booking?packageId=" + document.querySelector(".modal-body #packageId").value;
+});
+
+
+// include description of package in the modal upon clicking the image
+var images = document.querySelectorAll(".gallery");
+for (var i = 0; i < images.length; i++) {
+  images[i].addEventListener("click", function(){
+    var details = this.querySelector(".details");
+	document.querySelector(".modal-body").innerHTML = details.innerHTML;
+  });
+}
+
+</script>
+</body>
+</html>

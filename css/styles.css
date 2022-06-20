@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap'); /* roboto font */
+
+/* Angel's codes started here */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: #4c4a42;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h4 {
+  padding: 20px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.header {
+  padding: 30px;
+  background-color: #d9ed92;
+  position: sticky; top: 0;
+}
+
+div.gallery {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 2px #E4E5E8;
+  margin: 10px;
+}
+
+div.gallery:hover {
+  cursor: pointer;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px 5px 0 0;
+}
+
+div.gallery img:hover {
+  opacity: 0.8;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+div.details {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.package {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+  .package {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .package {
+    width: 100%;
+  }
+}
+
+#bookingForm {
+  margin: 10px auto;
+  padding: 20px;
+  max-width: 800px;
+  border-radius: 5px;
+  background-color: #94eaff;
+}
+
+#bookingForm input, #bookingForm select {
+  width: 100%;
+  padding: 5px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#bookingForm button {
+  width: 30%;
+  background-color: #86b827;
+  color: white;
+  padding: 5px;
+  margin: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#bookingForm button:hover {
+  background-color: #76a222;
+}
+
+#bookingForm input[readonly] {
+  background-color: #94eaff;
+  border: none;
+  padding: 0;
+  width: 60%;
+}
+
+.signin {
+  max-width: 500px;  
+}
+
+footer {
+  background-color: #004e64;
+  padding: 20px;
+  color: white;
+  width: 100%;
+  flex: 0 0 50px;
+  margin-top: auto;
+}
+
+/* Angel's codes ended here */
+

@@ -1,0 +1,25 @@
+/*
+Color pallet:
+d9ed92 yellow green cryola (light green)
+86b827 apple green (green)
+fbf9f0 floral white
+00a5cf (light blue)
+004e64 (dark blue)
+4c4a42 black olive
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap'); /* roboto font */
+
+:root{
+    --light-green: #d9ed92;
+    --green: #86b827;
+    --white: #fbf9f0;
+    --light-blue: #00a5cf;
+    --dark-blue: #004e64;
+    --black: #4c4a42;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #fbf9f0;
+}
